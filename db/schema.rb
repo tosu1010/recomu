@@ -59,11 +59,11 @@ ActiveRecord::Schema.define(version: 2019_12_02_081433) do
   end
 
   create_table "reviews_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "album_id"
+    t.bigint "review_id"
     t.bigint "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["album_id"], name: "index_reviews_tags_on_album_id"
+    t.index ["review_id"], name: "index_reviews_tags_on_review_id"
     t.index ["tag_id"], name: "index_reviews_tags_on_tag_id"
   end
 
@@ -95,6 +95,6 @@ ActiveRecord::Schema.define(version: 2019_12_02_081433) do
   add_foreign_key "reviews", "albums"
   add_foreign_key "reviews", "artists"
   add_foreign_key "reviews", "users"
-  add_foreign_key "reviews_tags", "albums"
+  add_foreign_key "reviews_tags", "reviews"
   add_foreign_key "reviews_tags", "tags"
 end
