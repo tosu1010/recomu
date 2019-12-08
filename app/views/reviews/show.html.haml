@@ -19,6 +19,7 @@
     - if @review.comments.present?
       .comment
         - @review.comments.each do |comment|
+          = comment.user.nickname
           = comment.content
   
   .post-comment
