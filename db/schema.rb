@@ -50,11 +50,9 @@ ActiveRecord::Schema.define(version: 2019_12_02_081433) do
     t.text "content", null: false
     t.bigint "user_id", null: false
     t.bigint "album_id", null: false
-    t.bigint "artist_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["album_id"], name: "index_reviews_on_album_id"
-    t.index ["artist_id"], name: "index_reviews_on_artist_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -93,7 +91,6 @@ ActiveRecord::Schema.define(version: 2019_12_02_081433) do
   add_foreign_key "likes", "reviews"
   add_foreign_key "likes", "users"
   add_foreign_key "reviews", "albums"
-  add_foreign_key "reviews", "artists"
   add_foreign_key "reviews", "users"
   add_foreign_key "reviews_tags", "reviews"
   add_foreign_key "reviews_tags", "tags"

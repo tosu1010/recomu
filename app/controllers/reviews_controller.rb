@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   def index
-    
+    @review = Review.all
   end
 
   def new
@@ -14,8 +14,7 @@ class ReviewsController < ApplicationController
       review = Review.create!(
         content: review_params[:review],
         user_id: current_user.id,
-        album_id: album.id,
-        artist_id: artist.id
+        album_id: album.id
       )
       review_params[:tags].each do |tag|
         tag_record = Tag.find_or_create_by!(name: tag)
@@ -23,15 +22,17 @@ class ReviewsController < ApplicationController
       end
     end
       flash[:success] = "登録しました！"
-      redirect_to new_review_path
+      redirect_to root_path
     rescue => e
+      puts e
       flash[:failed] = "登録に失敗しました"
       redirect_to new_review_path
 
   end
 
   def show
-    
+    @review = Review.find(params[:id])
+    @cooment = Comment.new
   end
 
 
