@@ -1,4 +1,15 @@
-
-
-
-
+.review-top
+  .reviews
+    - @review.each do |review|
+      = link_to review_path(review) do
+        .review
+          .review__album-title
+            = review.album.title
+          .review__artist-name
+            = review.album.artist.name
+          .review__content
+            = review.content
+  
+  .post-review
+    .post-review__button
+      = link_to '投稿する', new_review_path

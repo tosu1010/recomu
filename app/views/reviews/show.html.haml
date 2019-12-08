@@ -1,0 +1,27 @@
+.main
+  .review-show
+    .review-show__review
+      .review__album-title
+        = @review.album.title
+      .review__artist-name
+        = @review.album.artist.name
+      .review__tags
+        - @review.tags.each do |tag|
+          = tag.name
+      .review__content
+        = simple_format(@review.content)
+  
+  .like
+    .like__button
+      = button_tag 'いいね！'
+
+  .comments
+    - if @review.comments.present?
+      .comment
+        - @review.comments.each do |comment|
+          = comment.content
+  
+  .post-comment
+    = form_with model: @comment do |f|
+      = f.text_area :content
+      = f.submit '投稿！'
