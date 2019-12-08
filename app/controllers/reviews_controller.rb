@@ -32,7 +32,7 @@ class ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id])
-    @cooment = Comment.new
+    @comment = Comment.new
   end
 
 
