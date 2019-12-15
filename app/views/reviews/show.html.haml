@@ -12,8 +12,7 @@
         = simple_format(@review.content)
   
   .like
-    .like__button
-      = button_tag 'いいね！'
+    = render partial: 'likes/like', locals: {review: @review}
 
   %ul.comments#comments
     - @review.comments.each do |comment|
