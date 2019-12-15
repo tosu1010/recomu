@@ -1,0 +1,39 @@
+header {
+  background-color: #2a212e;
+  height: 150px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title_logo {
+  height: 100%;
+  margin-left: 50px;
+  &__image {
+    width: 226px;
+    height: 140px;
+  }
+}
+
+.buttons {
+  line-height: 140px;
+  font-size: 30px;
+}
+
+.button {
+  height: 150px;
+  width: 100px;
+  text-align: center;
+  background-color: #2a212e;
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #da612c;
+  transition: .4s;
+}
+
+.button:hover {
+  background: #da612c;
+  color: #2a212e;
+}
