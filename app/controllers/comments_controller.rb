@@ -5,7 +5,6 @@ class CommentsController < ApplicationController
     @comment = @review.comments.new(comment_params)
     if @comment.save
       respond_to do |format|
-        format.html { redirect_to review_path(@review)}
         format.json
       end
     else
