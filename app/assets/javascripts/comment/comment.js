@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function() {
+$(document).ready(function() {
   $(function(){
     function buildHTML(comment){
       let content = comment.content.replace(/\n/g, '<br>');
@@ -16,30 +16,17 @@ $(document).on('turbolinks:load', function() {
   
       return html
     }
-  
-    $('#comment-form').on('submit', function(e){
-      e.preventDefault();
-      let formData = new FormData(this);
-      let url = $(this).attr('action');
-      $.ajax({
-        type: 'POST',
-        url: url,
-        data: formData,
-        dataType: 'json',
-        processData: false,
-        contentType: false
-      })
-      .done(function(comment){
-        let html = buildHTML(comment);
-        $('#comments').append(html);
-        $('#comment-form')[0].reset();
-      })
-      .fail(function(){
-        alert('文字を入力してください')
-      })
-      .always(function(){
-        $('#post-comment__submit').removeAttr('disabled');
-      })
-    })
+
+    $(document).on('ajax:success', '#comment-form', function(data){
+      let html = buildHTML(data.detail[0]);
+      $('#comments').append(html);
+      $('#comment-form')[0].reset();
+      $('#post-comment__submit').removeAttr('disabled');
+    });
+
+    $(document).on('ajax:error', '#comment-form', function(){
+      $('#post-comment__submit').removeAttr('disabled');
+      alert('文字を入力してください');
+    });
   });
 });

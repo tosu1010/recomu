@@ -27,4 +27,4 @@
   .post-comment
     = form_with model: [@review, @comment], id: 'comment-form' do |f|
       = f.text_area :content
-      = f.submit '投稿！', id: 'post-comment__submit'
+      = f.submit '投稿！', id: 'post-comment__submit', data: {'disabled-with': '投稿中…'}
