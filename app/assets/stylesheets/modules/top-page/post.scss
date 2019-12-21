@@ -1,0 +1,32 @@
+.post {
+  position: fixed;
+  display: inline-block;
+  bottom: 10%;
+  right: 5%;
+
+  &__button {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 60px;
+    padding: 10px;
+    background-color: #2a212e;
+    color: #ffffff;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    text-align: center;
+    transition: .4s;
+    
+    &__message {
+      font-size: 20px;
+      position: relative;
+      bottom: 10%;
+    }
+  }
+  &__button:hover {
+    background-color: #da612c;
+    // color: #2a212e;
+  }
+
+}

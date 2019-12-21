@@ -11,7 +11,5 @@
             = review.album.artist.name
           .review__content
             = review.content
-  
-  .post-review
-    .post-review__button
-      = link_to '投稿する', new_review_path
+
+= render partial: 'layouts/post'
