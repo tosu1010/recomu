@@ -14,4 +14,6 @@ class Tag < ApplicationRecord
   def self.search(name)
     Tag.where('name LIKE(?)', "%#{name}%")
   end
+
+  validates :name, presence: true
 end
