@@ -35,7 +35,6 @@ class ReviewsController < ApplicationController
     @comment = Comment.new
   end
 
-
   private
   def review_params
     params.permit(:album, :artist, :review, tags: [])

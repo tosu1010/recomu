@@ -10,10 +10,15 @@
       = f.label :review, "レビュー",class: "review-form__label"
       = f.text_area :review, class: "review-form__text-area"
     .review-form__tag
-      = f.label :"tags[]", "タグ", class: "review-form__label"
-      = f.text_field :"tags[]", class: "review-form__text-field"
-      = f.label :"tags[]", "タグ", class: "review-form__label"
-      = f.text_field :"tags[]", class: "review-form__text-field"
+      .review-form__tag__container
+        = f.label :"tags[]", "タグ", class: "review-form__label", for: 'tag-field'
+        = f.text_field :"tags[]", class: "review-form__text-field--tag", id: 'tag-field'
+        .tags-incremental
+
+    .review-form__tag__add-button
+      = button_tag 'タグを追加', type: 'button', class: 'tag-button--add', id: 'tag-add-button'
+    
+
     = f.submit "投稿", class: "review-form__submit"
 
 = flash[:success]
