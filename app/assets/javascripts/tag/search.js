@@ -1,54 +1,42 @@
 $(document).on("turbolinks:load", function(){
-  const tag_container = $('.tags-incremental');
 
   $(function(){
-    function appendTags(tag){
+    function appendTags(object, tag_name){
       let html = 
       `<div class="append-tag">
-        <p>${tag.name}</p>
+        <p>${tag_name}</p>
        </div>
        `
-       tag_container.append(html);
+       object.append(html);
     }
 
-    function appendTagFrom(){
-      let html = 
-      `
-      <label class="review-form__label" for="tags[]">
-        タグ
-      </label>
-      <input class="review-form__text-field--tag" type="text" name="tags[]" id="tags[]">
-      `
-      $(".review-form__tag").append(html);
-    }
-
-    // タグ入力フォームを追加する
-    $(document).on("click", ".append-tag", function(e){
+    // クリックしたタグをフォーム内に格納
+    $(document).on('click', '.append-tag', function(e){
       e.preventDefault();
-      clickTag = $(this).children("p").text();
-      $(".review-form__text-field--tag").val(clickTag);
-      tag_container.empty();
-      if ($(".review-form__text-field--tag").length < 3 ){
-        appendTagFrom();
-      }
-    });
+      let parent = $(this).parent();
+      let value = $(this).children('p').text();
+      parent.siblings('#tag-field').val(value);
+      parent.empty();
+    })
   
     // タグのインクリメンタルサーチ
     $(document).on('keyup', '.review-form__text-field--tag', function(){
       let input = $(this).val();
+      let this_content = $(this);
 
       if (input) {
         $.ajax({
           type: 'GET',
           url: '/tags/search',
-          data: {tag: input },
+          data: {tag: input},
           dataType: 'json'
         })
         .done(function(tags){
-          tag_container.empty();
+          $('.tags-incremental').empty();
+          let add_tag_object = this_content.siblings('.tags-incremental')
           if (tags.length !== 0) {
             tags.forEach(function(tag){
-              appendTags(tag);
+              appendTags(add_tag_object, tag.name);
             });
           }
         })
@@ -57,7 +45,7 @@ $(document).on("turbolinks:load", function(){
         });
       }
       else {
-        tag_container.empty();
+        this_content.siblings('.tags-incremental').empty();
       }
     });
   });

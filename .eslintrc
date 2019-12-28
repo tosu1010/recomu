@@ -1,0 +1,8 @@
+{
+  "env": {
+    // documentオブジェクトを使用するため
+    "browser": true,
+    // パーサーをes6に設定(letやconstを反映)
+    "es6": true
+  }
+}
