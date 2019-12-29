@@ -1,8 +1,64 @@
 .review-top {
-  margin: 40px auto;
-  width: $wide;
-
   .reviews {
-    
+    font-size: 0;
+
+    .review {
+      width: 150px;
+      margin: 0 68.5px 20px 0;
+      display: inline-block;
+      vertical-align: top;
+      font-size: 14px;
+      height: 150px;
+      pointer-events: none;
+      transition: all 0.4s ease;
+      position: relative;
+      box-shadow: 3px 3px 3px #555555;
+
+      &__album-image {
+        &__image {
+          width: 150px;
+          height: 150px;
+          pointer-events: auto;
+        }
+      }
+
+      &__info {
+        display: none;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: $base_color;
+        border-radius: 0 10px 0 0;
+        padding: 5px;
+        max-width: 120px;
+        min-width: 80px;
+        white-space: nowrap;
+        text-align: left;
+        opacity: .85;
+
+        &__album-title {
+          overflow: hidden;
+          font-size: 12px;
+        }
+
+        &__artist-name {
+          overflow: hidden;
+          font-size: 10px;
+        }
+      }
+
+      &:hover {
+        transform: scale(1.1);
+        
+        .review__info {
+          display: block;
+          
+        }
+      }
+
+      &:nth-child(5n) {
+        margin-right: 0;
+      }
+    }
   }
 }
