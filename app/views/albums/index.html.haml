@@ -1,0 +1,17 @@
+= render partial: 'layouts/header'
+
+.wrapper
+  .recomu-top
+    .albums
+      - @albums.each do |album|
+        .album
+          = link_to album_path(album) do
+            .album__album-image
+              = image_tag 'https://ia801308.us.archive.org/19/items/mbid-e435a2a4-801f-4a88-a7b5-e9c52b0b0be3/mbid-e435a2a4-801f-4a88-a7b5-e9c52b0b0be3-11019164801.jpg', class: 'album__album-image__image'
+            .album__info
+              .album__info__album-title
+                = album.title
+              .album__info__artist-name
+                = album.artist.name
+
+= render partial: 'layouts/post'
