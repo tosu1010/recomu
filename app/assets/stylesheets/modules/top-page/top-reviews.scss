@@ -1,8 +1,8 @@
-.review-top {
-  .reviews {
+.recomu-top {
+  .albums {
     font-size: 0;
 
-    .review {
+    .album {
       width: 150px;
       margin: 0 68.5px 20px 0;
       display: inline-block;
@@ -50,7 +50,7 @@
       &:hover {
         transform: scale(1.1);
         
-        .review__info {
+        .album__info {
           display: block;
           
         }
