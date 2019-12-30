@@ -1,0 +1,15 @@
+%header
+  .title-logo
+    = link_to root_path do
+      = image_tag "recomu_logo.png", {class: "title-logo__image"}
+  .buttons
+    = link_to root_path, class: "button" do
+      = fa_icon "search"
+    - if user_signed_in?
+      = link_to new_user_session_path, class: "button" do
+        = fa_icon "cogs"
+      = link_to destroy_user_session_path, class: "button", method: "delete" do
+        = fa_icon "sign-out"
+    - else
+      = link_to new_user_session_path, class: "button" do
+        = fa_icon "sign-in"

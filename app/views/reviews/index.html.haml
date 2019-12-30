@@ -1,15 +1,17 @@
-.review-top
-  .reviews
-    - @review.each do |review|
-      = link_to review_path(review) do
+= render partial: 'header'
+
+.wrapper
+  .review-top
+    .reviews
+      - @review.each do |review|
         .review
-          .review__album-title
-            = review.album.title
-          .review__artist-name
-            = review.album.artist.name
-          .review__content
-            = review.content
-  
-  .post-review
-    .post-review__button
-      = link_to '投稿する', new_review_path
+          = link_to review_path(review) do
+            .review__album-image
+              = image_tag 'https://ia801308.us.archive.org/19/items/mbid-e435a2a4-801f-4a88-a7b5-e9c52b0b0be3/mbid-e435a2a4-801f-4a88-a7b5-e9c52b0b0be3-11019164801.jpg', class: 'review__album-image__image'
+            .review__info
+              .review__info__album-title
+                = review.album.title
+              .review__info__artist-name
+                = review.album.artist.name
+
+= render partial: 'layouts/post'

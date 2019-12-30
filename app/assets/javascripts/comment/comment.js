@@ -7,7 +7,9 @@ $(document).ready(function() {
                       ${comment.user_name}
                     </div>
                     <div class="comment__content">
-                      ${content}
+                      <p>
+                        ${content}
+                      </p>
                     </div>
                     <div class="comment__time">
                       ${comment.created_at}
