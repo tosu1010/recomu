@@ -9,4 +9,17 @@ a {
 .wrapper {
   margin: 40px auto;
   width: $wide;
+
+  @media screen and (max-width: $wide) {
+    width: 100%;
+    padding: 0 20px;
+  }
+}
+
+.upper {
+  @include clearfix;
+}
+
+.bottom {
+  margin-top: 40px;
 }

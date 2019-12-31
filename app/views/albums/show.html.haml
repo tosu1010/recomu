@@ -2,40 +2,44 @@
 
 .wrapper
   .album-show
-    .album-show__info
-      .album-show__info__album-image
-        = image_tag 'https://placehold.jp/150x150.png'
-      .album-show__info__album-title
-        = @album.title
-      .album-show__info__artist-name
-        = @album.artist.name
+    .upper
+      .album-show__detail
+        .album-show__detail__album-image
+          = image_tag 'https://placehold.jp/150x150.png', class: 'album-show__detail__album-image__image'
+        .album-show__detail__info
+          .album-show__detail__info__album-title
+            = @album.title
+          .album-show__detail__info__artist-name
+            = @album.artist.name
       
-    .reviews
-      - @reviews.each do |review|
-        .review
-          .review__tags
-            - review.tags.each do |tag|
-              .review__tags__tag
-                = tag.name
-          .review__content
-            .review__content__user-name
-              = review.user.nickname
-            .review__content__text
-              = review.content
-    
-    .anoter-albums
-      .anoter-albums__header
-        = @album.artist.name
-        %span
-          の他のアルバム
-      - if @another_albums.present?
-        - @another_albums.each do |another_album|
-          .another-albums__album
-            = link_to album_path(another_album) do
-              .album__album-image
-                = image_tag 'https://placehold.jp/200x200.png', class: 'album__album-image__image'
-              .album__info
-                .album__info__album-title
-                  = another_album.title
-                .album__info__artist-name
-                  = another_album.artist.name
+      .border-radius
+        .reviews
+          - @reviews.each do |review|
+            .review
+              .review__user-name
+                = review.user.nickname
+              .review__content
+                .review__content__text
+                  = review.content
+              %ul.review__tags
+                - review.tags.each do |tag|
+                  %li.review__tags__tag
+                    = tag.name
+
+    .bottom  
+      .anoter-albums
+        .anoter-albums__header
+          = @album.artist.name
+          %span
+            の他のアルバム
+        - if @another_albums.present?
+          - @another_albums.each do |another_album|
+            .another-albums__album
+              = link_to album_path(another_album) do
+                .album__album-image
+                  = image_tag 'https://placehold.jp/200x200.png', class: 'album__album-image__image'
+                .album__info
+                  .album__info__album-title
+                    = another_album.title
+                  .album__info__artist-name
+                    = another_album.artist.name
