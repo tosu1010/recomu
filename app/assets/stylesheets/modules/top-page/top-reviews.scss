@@ -1,10 +1,14 @@
 .recomu-top {
   .albums {
     font-size: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
 
     .album {
       width: 150px;
-      margin: 0 68.5px 20px 0;
+      margin-bottom: 20px;
       display: inline-block;
       vertical-align: top;
       font-size: 14px;
@@ -13,6 +17,10 @@
       transition: all 0.4s ease;
       position: relative;
       box-shadow: 3px 3px 3px #555555;
+
+      @media screen and (max-width: $wide) {
+        margin-right: 40px;
+      }
 
       &__album-image {
         &__image {
@@ -56,9 +64,9 @@
         }
       }
 
-      &:nth-child(5n) {
-        margin-right: 0;
-      }
+      // &:nth-child(5n) {
+      //   margin-right: 0;
+      // }
     }
   }
 }
