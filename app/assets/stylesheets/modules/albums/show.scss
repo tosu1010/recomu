@@ -3,6 +3,12 @@
     float: left;
     width: 40%;
 
+    @media screen and (max-width: $middle) {
+      float: none;
+      text-align: center;
+      width: 100%;
+    }
+
     &__album-image {
       &__image {
         width: 200px;

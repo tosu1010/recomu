@@ -2,10 +2,18 @@
   .border-radius {
     border: solid 1px #666666;
     float: right;
-    max-width: 60%;
+    width: 60%;
     padding: 10px 0 10px 10px;
     border-radius: 20px;
     overflow: hidden;
+
+    @media screen and (max-width: $middle){
+      float: none;
+      width: 100%;
+      margin-top: 20px;
+      min-height: 100px;
+      max-height: 500px;
+    }
     
     .reviews {
       max-height: 800px;

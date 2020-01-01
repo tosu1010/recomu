@@ -27,19 +27,18 @@
                     = tag.name
 
     .bottom  
-      .anoter-albums
-        .anoter-albums__header
+      .another-albums
+        .another-albums__header
           = @album.artist.name
           %span
             の他のアルバム
-        - if @another_albums.present?
-          - @another_albums.each do |another_album|
-            .another-albums__album
-              = link_to album_path(another_album) do
-                .album__album-image
-                  = image_tag 'https://placehold.jp/200x200.png', class: 'album__album-image__image'
-                .album__info
-                  .album__info__album-title
-                    = another_album.title
-                  .album__info__artist-name
-                    = another_album.artist.name
+        .another-albums__container
+          - if @another_albums.present?
+            - @another_albums.each do |another_album|
+              .another-albums__container__album
+                = link_to album_path(another_album) do
+                  .album-image
+                    = image_tag 'https://placehold.jp/200x200.png', class: 'album-image__content'
+                  .album-info
+                    .album-info__album-title
+                      = another_album.title
