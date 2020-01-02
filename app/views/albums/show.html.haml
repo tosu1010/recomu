@@ -14,10 +14,22 @@
             = @album.title
           .album-show__detail__info__artist-name
             = @album.artist.name
+        .album-show__detail__tracks
+          - if @tracks
+            - @tracks.each do |track|
+              .album-show__detail__tracks__track
+                .track-info
+                  .track-info__number
+                    = track.track_number
+                  .track-info__name
+                    = track.name
+                .track_audio
+                  %audio{controls: '', src: "#{track.preview_url}"}
+
       
       .border-radius
         .reviews
-          - @reviews.each do |review|
+          - @album.reviews.each do |review|
             .review
               .review__user-name
                 = review.user.nickname
@@ -36,8 +48,8 @@
           %span
             の他のアルバム
         .another-albums__container
-          - if @another_albums.present?
-            - @another_albums.each do |another_album|
+          - if @album.another_albums().present?
+            - @album.another_albums().each do |another_album|
               .another-albums__container__album
                 = link_to album_path(another_album) do
                   .album-image
