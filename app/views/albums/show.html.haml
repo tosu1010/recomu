@@ -5,7 +5,10 @@
     .upper
       .album-show__detail
         .album-show__detail__album-image
-          = image_tag 'https://placehold.jp/150x150.png', class: 'album-show__detail__album-image__image'
+          - if @album.image.present?
+            = image_tag @album.image, class: 'album-show__detail__album-image__image'
+          - else
+            = image_tag 'no_image.png', class: 'album-show__detail__album-image__image'
         .album-show__detail__info
           .album-show__detail__info__album-title
             = @album.title
@@ -38,7 +41,10 @@
               .another-albums__container__album
                 = link_to album_path(another_album) do
                   .album-image
-                    = image_tag 'https://placehold.jp/200x200.png', class: 'album-image__content'
+                  - if another_album.image.present?
+                    = image_tag another_album.image, class: 'album-show__detail__album-image__image'
+                  - else
+                    = image_tag 'no_image.png', class: 'album-image__content'
                   .album-info
                     .album-info__album-title
                       = another_album.title
