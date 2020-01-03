@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  include SpotifyMethod
+
   def index
     
   end
@@ -8,9 +10,17 @@ class ReviewsController < ApplicationController
   end
 
   def create
+    spotify_auth
+    
+    artist_spotify_id = get_artist_spotify_id(review_params[:artist])
+    if artist_spotify_id
+      album_spotify_id = get_album_spotify_id(artist_spotify_id, review_params[:album])
+      album_image = get_album_image(album_spotify_id)
+    end
+
     Review.transaction do
-      artist = Artist.find_or_create_by!(name: review_params[:artist])
-      album = Album.find_or_create_by!(title: review_params[:album], artist_id: artist.id)
+      artist = Artist.find_or_create_by!(name: review_params[:artist], spotify_id: artist_spotify_id)
+      album = Album.find_or_create_by!(title: review_params[:album], artist_id: artist.id, spotify_id: album_spotify_id, image: album_image)
       review = Review.create!(
         content: review_params[:review],
         user_id: current_user.id,
@@ -25,9 +35,8 @@ class ReviewsController < ApplicationController
       redirect_to root_path
     rescue => e
       puts e
-      flash[:failed] = "登録に失敗しました"
+      flash[:failed] = e
       redirect_to new_review_path
-
   end
 
   def show
