@@ -10,16 +10,12 @@ module SpotifyMethod
 
   # artistのspotify_idを取得する
   def get_artist_spotify_id(artist_name)
-    spotify_auth
-
     artist = RSpotify::Artist.search(artist_name).first
     artist.present? ? artist.id : nil
   end
 
   # 引数に渡したalbumのspotify_idを取得する
   def get_album_spotify_id(artist_spotify_id, album_name)
-    spotify_auth
-
     artist = RSpotify::Artist.find(artist_spotify_id)
     album = artist.albums(album_type: 'single', limit: 50).find { |album| album.name == album_name }
     unless album
@@ -33,8 +29,6 @@ module SpotifyMethod
 
   # アルバムの画像を探す
   def get_album_image(album_spotify_id)
-    spotify_auth
-
     image = RSpotify::Album.find(album_spotify_id)
     image ? image.images[0]['url'] : 'no_image.png'
   end

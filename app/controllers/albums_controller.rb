@@ -1,6 +1,8 @@
 class AlbumsController < ApplicationController
   include SpotifyMethod
 
+  before_action :spotify_auth, only: :show
+
   def index
     @albums = Album.all
   end

@@ -10,6 +10,8 @@ class ReviewsController < ApplicationController
   end
 
   def create
+    spotify_auth
+    
     artist_spotify_id = get_artist_spotify_id(review_params[:artist])
     if artist_spotify_id
       album_spotify_id = get_album_spotify_id(artist_spotify_id, review_params[:album])
