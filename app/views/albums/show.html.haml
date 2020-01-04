@@ -14,17 +14,21 @@
             = @album.title
           .album-show__detail__info__artist-name
             = @album.artist.name
-        .album-show__detail__tracks
+        .tracks
           - if @tracks
             - @tracks.each do |track|
-              .album-show__detail__tracks__track
-                .track-info
-                  .track-info__number
-                    = track.track_number
-                  .track-info__name
+              .track
+                .track__info
+                  .track__info__number
+                    = "#{track.track_number}."
+                  .track__info__name
                     = track.name
-                .track_audio
-                  %audio{controls: '', src: "#{track.preview_url}"}
+                .track__audio
+                  = button_tag type: 'button', class: 'track__audio__button', id: 'play-button' do
+                    = fa_icon 'play-circle'
+                  = button_tag type: 'button', class: 'track__audio__button--stop', id: 'play-button' do
+                    = fa_icon 'pause-circle'
+                  %audio{src: "#{track.preview_url}", id: "audio--#{track.track_number}"}
 
       
       .border-radius

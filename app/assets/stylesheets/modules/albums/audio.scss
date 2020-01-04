@@ -1,0 +1,50 @@
+.album-show {
+  &__detail {
+    .tracks {
+      max-width: 300px;
+      margin: 20px 0 20px 10px;
+
+      .track {
+        padding: 5px 0;
+        border-bottom: 1px solid #999999;
+        display: flex;
+        justify-content: space-between;
+        padding-left: 5px;
+
+        &:first-child {
+          border-top: 1px solid #999999
+        }
+
+        &__info {
+
+          &__number {
+            display: inline-block;
+            font-size: 14px;
+            margin-right: 10px
+          }
+
+          &__name {
+            display: inline-block;
+            font-size: 14px;
+          }
+        }
+
+        &__audio {
+          font-size: 24px;
+          line-height: 24px;
+          color: #cccccc;
+
+          &__button {
+            padding-right: 5px;
+            border-style: none;
+
+            &--stop {
+              border-style: none;
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
