@@ -23,12 +23,13 @@
                     = "#{track.track_number}."
                   .track__info__name
                     = track.name
-                .track__audio
-                  = button_tag type: 'button', class: 'track__audio__button', id: 'play-button' do
-                    = fa_icon 'play-circle'
-                  = button_tag type: 'button', class: 'track__audio__button--stop', id: 'play-button' do
-                    = fa_icon 'pause-circle'
-                  %audio{src: "#{track.preview_url}", id: "audio--#{track.track_number}"}
+                - if track.preview_url
+                  .track__audio
+                    = button_tag type: 'button', class: 'track__audio__button' do
+                      = fa_icon 'play-circle'
+                    = button_tag type: 'button', class: 'track__audio__button--stop' do
+                      = fa_icon 'pause-circle'
+                    %audio{src: "#{track.preview_url}", class: "prev-audio"}
 
       
       .border-radius

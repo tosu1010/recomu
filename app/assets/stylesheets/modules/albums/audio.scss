@@ -33,14 +33,28 @@
           font-size: 24px;
           line-height: 24px;
           color: #cccccc;
+          padding-right: 5px;
+          transition: .4s;
+          text-align: center;
 
           &__button {
-            padding-right: 5px;
             border-style: none;
+            outline: none;
+            
+            &:active {
+              line-height: 22px;
+              font-size: 22px;
+            }
 
             &--stop {
               border-style: none;
               display: none;
+              outline: none;
+              
+              &:active {
+                line-height: 22px;
+                font-size: 22px;
+              }
             }
           }
         }
