@@ -14,14 +14,19 @@
     
     &__album {
       font-size: 14px;
-      width: 150px;
+      width: 200px;
+      height: 200px;
       position: relative;
-      margin: 0 10px 20px 0;
+
+      @media screen and (max-width: $middle) {
+        width: 120px;
+        height: 120px;
+      }
 
       .album-image {
         &__content {
-          width: 150px;
-          height: 150px;
+          width: 100%;
+          height: 100%;
         }
       }
 

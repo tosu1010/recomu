@@ -4,11 +4,11 @@ class AlbumsController < ApplicationController
   before_action :spotify_auth, only: :show
 
   def index
-    @albums = Album.all
+    @albums = Album.all.includes(:artist)
   end
 
   def show
-    @album = Album.find(params[:id])
+    @album = Album.includes(:artist, reviews: :tags).find(params[:id])
     @tracks = @album.spotify_id ? get_tracks(@album.spotify_id) : nil
   end
 end

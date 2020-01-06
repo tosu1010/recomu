@@ -8,7 +8,6 @@ $(function(){
 
     // 再生終了時のリセット処理
     audio.addEventListener('ended', function(){
-      console.log('30秒');
       audio.pause();
       audio.currentTime = 0;
       $(this).siblings('.track__audio__button--stop').hide();

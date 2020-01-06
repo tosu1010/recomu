@@ -1,29 +1,42 @@
 .album-show {
   .border-radius {
-    border: solid 1px #666666;
+    border: solid 1px #46324D;
     float: right;
     width: 60%;
     padding: 10px 0 10px 10px;
     border-radius: 20px;
     overflow: hidden;
+    background-color: #FFF6FF;
 
     @media screen and (max-width: $middle){
       float: none;
       width: 100%;
       margin-top: 20px;
-      min-height: 100px;
-      max-height: 500px;
     }
     
     .reviews {
       max-height: 800px;
       overflow-y: scroll;
       border-radius: 10px;
+
+      @media screen and (max-width: $middle) {
+        min-height: 100px;
+        max-height: 500px;
+      }
+
+      &__header {
+        font-size: 18px;
+        margin: 5px 20px 0 0;
+        padding-bottom: 2px;
+        border-bottom: solid 1px #46324D;
+      }
       
       .review {
-        border-bottom: dotted 1px #666666;
+        border-bottom: dotted 1px #46324D;
         margin-top: 10px;
-        padding: 0 10px 20px 0;
+        padding-bottom: 20px;
+        margin-right: 10px;
+
         
         &:last-child {
           border: none;

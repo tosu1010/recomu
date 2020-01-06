@@ -34,6 +34,8 @@
       
       .border-radius
         .reviews
+          .reviews__header
+            Reviews
           - @album.reviews.each do |review|
             .review
               .review__user-name
@@ -59,7 +61,7 @@
                 = link_to album_path(another_album) do
                   .album-image
                   - if another_album.image.present?
-                    = image_tag another_album.image, class: 'album-show__detail__album-image__image'
+                    = image_tag another_album.image, class: 'album-image__content'
                   - else
                     = image_tag 'no_image.png', class: 'album-image__content'
                   .album-info
