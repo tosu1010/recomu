@@ -14,21 +14,28 @@
             = @album.title
           .album-show__detail__info__artist-name
             = @album.artist.name
-        .album-show__detail__tracks
+        .tracks
           - if @tracks
             - @tracks.each do |track|
-              .album-show__detail__tracks__track
-                .track-info
-                  .track-info__number
-                    = track.track_number
-                  .track-info__name
+              .track
+                .track__info
+                  .track__info__number
+                    = "#{track.track_number}."
+                  .track__info__name
                     = track.name
-                .track_audio
-                  %audio{controls: '', src: "#{track.preview_url}"}
+                - if track.preview_url
+                  .track__audio
+                    = button_tag type: 'button', class: 'track__audio__button' do
+                      = fa_icon 'play-circle'
+                    = button_tag type: 'button', class: 'track__audio__button--stop' do
+                      = fa_icon 'pause-circle'
+                    %audio{src: "#{track.preview_url}", class: "prev-audio"}
 
       
       .border-radius
         .reviews
+          .reviews__header
+            Reviews
           - @album.reviews.each do |review|
             .review
               .review__user-name
@@ -54,7 +61,7 @@
                 = link_to album_path(another_album) do
                   .album-image
                   - if another_album.image.present?
-                    = image_tag another_album.image, class: 'album-show__detail__album-image__image'
+                    = image_tag another_album.image, class: 'album-image__content'
                   - else
                     = image_tag 'no_image.png', class: 'album-image__content'
                   .album-info
