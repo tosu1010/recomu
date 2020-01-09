@@ -2,7 +2,7 @@ $(function(){
 
   const add_tag_button = 
   `
-  <div class="review-from__tag__add-button">
+  <div class="review-form__tag__add-button">
     <button name="button" type="button" class="tag-button--add" id="tag-add-button">
       タグを追加
     </button>
@@ -13,9 +13,6 @@ $(function(){
     let html = 
     `
     <div class="review-form__tag__container">
-      <label class="review-form__label" for="tag-field">
-        タグ
-      </label>
       <input class="review-form__text-field--tag" type="text" name="tags[]" id="tag-field">
       <button name="button" type="button" class="tag-button--remove" id="tag-remove-button">
         削除

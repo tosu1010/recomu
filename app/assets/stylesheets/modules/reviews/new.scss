@@ -1,0 +1,168 @@
+.create-review {
+  &__header {
+    font-size: 30px;
+    margin-bottom: 25px;
+    position: relative;
+    
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      display: inline-block;
+      width: 150px;
+      height: 2px;
+      background-color: $border_color;
+    }
+  }
+
+  .review-form {
+    margin: 10px;
+
+    &__label {
+      font-size: 18px;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    &__text-field {
+      height: 30px;
+      width: 50%;
+      line-height: 20px;
+      border-radius: 5px;
+      padding: 0 3px;
+      border: inset 1px;
+
+      &:focus {
+        outline: none;
+        border: solid 1px $focus_color;
+      }
+
+      &--tag {
+        height: 30px;
+        width: 200px;
+        line-height: 20px;
+        border-radius: 5px;
+        padding: 0 3px;
+        border: inset 1px;
+        margin-bottom: 5px;
+
+        &:focus {
+          outline: none;
+          border: solid 1px $focus_color;
+        }
+      }
+    }
+
+    &__text-area {
+      height: 150px;
+      width: 100%;
+      line-height: 20px;
+      max-height: 300px;
+      padding: 3px;
+      border-radius: 5px;
+      border: inset 1px;
+      
+      &:focus {
+        outline: none;
+        border: solid 1px $focus_color;
+      }
+    }
+
+    &__artist {
+      margin-bottom: 10px;
+    }
+
+    &__album {
+      margin-bottom: 10px;
+    }
+
+    &__review {
+      margin-bottom: 10px;
+    }
+
+    &__tag {
+      margin-bottom: 5px;
+
+      &__add-button {
+        margin-bottom: 10px;
+        
+        .tag-button--add {
+          font-size: 14px;
+          line-height: 28px;
+          background-color: #D7CADA;
+          width: 100px;
+          border-radius: 5px;
+
+          &:focus {
+            outline: none;
+            border: solid 1px $focus_color;
+          }
+        }
+      }
+
+      &__container {
+        position: relative;
+        margin-right: 10px;
+
+        .tag-button {
+          &--remove {
+            font-size: 14px;
+            line-height: 28px;
+            background-color: #D7CADA;
+            width: 40px;
+            margin-left: 5px;
+            border-radius: 5px;
+
+            &:focus {
+              outline: none;
+            }
+          }
+        }
+        
+        .tags-incremental {
+          position: fixed;
+          width: 200px;
+          max-height: 300px;
+          background-color: #ffffff;
+          border: solid 1px #000000;
+          overflow-y: scroll;
+          visibility: hidden;
+          z-index: 9;
+          border-radius: 5px;
+
+          &--show {
+            visibility: visible;
+          }
+          
+          .append-tag {
+            border-bottom: solid 1px #999999;
+            transition: all 0.3s ease;
+            padding: 2px 0 2px 2px;
+
+            &:hover {
+              background-color: #B3D7FF;
+              cursor: pointer;
+            }
+
+            &:last-child {
+              border: none;
+            }
+          }
+        }
+      }
+    }
+
+    &__submit {
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 40px;
+      background-color: #A25960;
+      width: 80px;
+      border-radius: 5px;
+      color: #FFF6FF;
+      margin: 0 auto;
+      display: block;
+    }
+  }
+}

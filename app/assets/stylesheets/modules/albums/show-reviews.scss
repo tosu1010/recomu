@@ -1,6 +1,6 @@
 .album-show {
   .border-radius {
-    border: solid 1px #46324D;
+    border: solid 1px $border_color;
     float: right;
     width: 60%;
     padding: 10px 0 10px 10px;
@@ -28,11 +28,11 @@
         font-size: 18px;
         margin: 5px 20px 0 0;
         padding-bottom: 2px;
-        border-bottom: solid 1px #46324D;
+        border-bottom: solid 1px $border_color;
       }
       
       .review {
-        border-bottom: dotted 1px #46324D;
+        border-bottom: dotted 1px $border_color;
         margin-top: 10px;
         padding-bottom: 20px;
         margin-right: 10px;
