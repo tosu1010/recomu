@@ -9,22 +9,25 @@ module SpotifyMethod
   end
 
   # artistのspotify_idを取得する
-  def get_artist_spotify_id(artist_name)
+  def get_artist_spotify(artist_name)
     artist = RSpotify::Artist.search(artist_name).first
-    artist.present? ? artist.id : nil
   end
 
   # 引数に渡したalbumのspotify_idを取得する
-  def get_album_spotify_id(artist_spotify_id, album_name)
+  def get_album_spotify(artist_spotify_id, album_name)
     artist = RSpotify::Artist.find(artist_spotify_id)
-    album = artist.albums(album_type: 'single', limit: 50).find { |album| album.name == album_name }
+    album = artist.albums(album_type: 'single', limit: 50).find { |album| album.name.include?(album_name) }
     unless album
-      album = artist.albums(album_type: 'album', limit: 50).find { |album| album.name == album_name }
+      album = artist.albums(album_type: 'album', limit: 50).find { |album| album.name.include?(album_name) }
       unless album
-        album = artist.albums(album_type: 'compilation', limit: 50).find { |album| album.name == album_name }
+        album = artist.albums(album_type: 'compilation', limit: 50).find { |album| album.name.include?(album_name) }
+        unless album
+          album_name = "*#{album_name.gsub(/\s/, '%20')}*"
+          album = RSpotify::Album.search(album_name).find { |album| album.artists.id == artist_spotify_id }[0]
+        end
       end
     end
-    album ? album.id : nil
+    album ? album : nil
   end
 
   # アルバムの画像を探す

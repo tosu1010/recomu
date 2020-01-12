@@ -18,6 +18,14 @@ $(function(){
     parent.removeClass('tags-incremental--show');
   })
 
+  // 検索されたタグの枠外をクリックした際に検索された窓を閉じる。
+  $(document).on('click touched', function(e){
+    if (!$(e.target).closest('.append-tag').length) {
+      $('.tags-incremental').empty();
+      $('.tags-incremental').removeClass('tags-incremental--show');
+    }
+  })
+
   // タグのインクリメンタルサーチ
   $(document).on('keyup', '.review-form__text-field--tag', function(){
     let input = $(this).val();
