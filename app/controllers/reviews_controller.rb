@@ -44,6 +44,8 @@ class ReviewsController < ApplicationController
   def show
     @review = Review.find(params[:id])
     @comment = Comment.new
+    @album = @review.album
+    @tracks = @album.spotify_id ? get_tracks(@album.spotify_id) : nil
   end
 
   private

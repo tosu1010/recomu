@@ -1,22 +1,31 @@
--# .album-show__info__tags
--#   - @album.review.tags.each do |tag|
--#     = tag.name
--# .review__content
--#   = simple_format(@album.review.content)
+= render partial: 'layouts/header'
 
+.wrapper
+  .review-show
+    .upper
+      = render partial: 'albums/album_info', locals: {album: @album, tracks: @tracks}
 
+      .review-show__review
+        .review-show__review__user-name
+          = @review.user.nickname
 
--# %ul.comments#comments
--#   - @album.review.comments.each do |comment|
--#     %li.comment
--#       .comment__user-nickname
--#         = comment.user.nickname
--#       .comment__content
--#         = simple_format(h(comment.content))
--#       .comment__time
--#         = l comment.created_at, format: :short
+        .review-show__info__tags
+          - @review.tags.each do |tag|
+            = tag.name
+        .review-show__content
+          = simple_format(@review.content)
 
--# .post-comment
--#   = form_with model: [@review, @comment], id: 'comment-form' do |f|
--#     = f.text_area :content
--#     = f.submit '投稿！', id: 'post-comment__submit', data: {'disabled-with': '投稿中…'}
+      %ul.comments#comments
+        - @review.comments.each do |comment|
+          %li.comment
+            .comment__user-nickname
+              = comment.user.nickname
+            .comment__content
+              = simple_format(h(comment.content))
+            .comment__time
+              = l comment.created_at, format: :short
+
+      .post-comment
+        = form_with model: [@review, @comment], id: 'comment-form' do |f|
+          = f.text_area :content
+          = f.submit '投稿！', id: 'post-comment__submit', data: {'disabled-with': '投稿中…'}
