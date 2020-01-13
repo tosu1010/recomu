@@ -40,13 +40,16 @@
             .review
               .review__user-name
                 = review.user.nickname
-              .review__content
-                .review__content__text
-                  = review.content
               %ul.review__tags
                 - review.tags.each do |tag|
                   %li.review__tags__tag
                     = tag.name
+              = link_to review_path(review), class: 'review__link' do
+                .review__content
+                  .review__content__text
+                    = review.content
+              .like{id: "like--#{review.id}"}
+                = render partial: 'likes/like', locals: {review: review}
 
     .bottom  
       .another-albums
@@ -67,3 +70,5 @@
                   .album-info
                     .album-info__album-title
                       = another_album.title
+
+  = render 'layouts/post'

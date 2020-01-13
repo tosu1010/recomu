@@ -13,12 +13,16 @@ class ReviewsController < ApplicationController
     spotify_auth
     
     artist_info = get_artist_spotify(review_params[:artist])
+    artist_spotify_id = artist_info ? artist_info.id : nil
+
     album_info = artist_info ? get_album_spotify(artist_info.id, review_params[:album]) : nil
+    album_title = album_info ? album_info.name : review_params[:album]
+    album_spotify_id = album_info ? album_info.id : nil
     album_image = album_info ? get_album_image(album_info.id) : 'no_image.png'
 
     Review.transaction do
-      artist = Artist.find_or_create_by!(name: review_params[:artist], spotify_id: artist_info ? artist_info.id : nil)
-      album = Album.find_or_create_by!(title: album_info ? album_info.name : review_params[:album], artist_id: artist.id, spotify_id: album_info ? album_info.id : nil, image: album_image)
+      artist = Artist.find_or_create_by!(name: review_params[:artist], spotify_id: artist_spotify_id)
+      album = Album.find_or_create_by!(title: album_title, artist_id: artist.id, spotify_id: album_spotify_id, image: album_image)
       review = Review.create!(
         content: review_params[:review],
         user_id: current_user.id,
@@ -46,4 +50,5 @@ class ReviewsController < ApplicationController
   def review_params
     params.permit(:album, :artist, :review, tags: [])
   end
+
 end
