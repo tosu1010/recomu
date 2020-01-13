@@ -4,6 +4,9 @@ class LikesController < ApplicationController
   def create
     like = Like.new(flag: 1, user_id: current_user.id, review_id: @review.id)
     like.save
+
+    # ハートのアニメーションを動かすため
+    sleep(0.45)
   end
 
   def destroy

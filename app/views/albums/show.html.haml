@@ -5,10 +5,7 @@
     .upper
       .album-show__detail
         .album-show__detail__album-image
-          - if @album.image.present?
-            = image_tag @album.image, class: 'album-show__detail__album-image__image'
-          - else
-            = image_tag 'no_image.png', class: 'album-show__detail__album-image__image'
+          = image_tag @album.image, class: 'album-show__detail__album-image__image'
         .album-show__detail__info
           .album-show__detail__info__album-title
             = @album.title
@@ -16,6 +13,11 @@
             = @album.artist.name
         .tracks
           - if @tracks
+            .tracks__header
+              .tracks__header__track
+                Tracks
+              .tracks__header__sample
+                Sample
             - @tracks.each do |track|
               .track
                 .track__info
@@ -40,13 +42,16 @@
             .review
               .review__user-name
                 = review.user.nickname
-              .review__content
-                .review__content__text
-                  = review.content
               %ul.review__tags
                 - review.tags.each do |tag|
                   %li.review__tags__tag
                     = tag.name
+              = link_to review_path(review), class: 'review__link' do
+                .review__content
+                  .review__content__text
+                    = simple_format(review.content)
+              .like{id: "like--#{review.id}"}
+                = render partial: 'likes/like', locals: {review: review}
 
     .bottom  
       .another-albums
@@ -67,3 +72,5 @@
                   .album-info
                     .album-info__album-title
                       = another_album.title
+
+  = render 'layouts/post'

@@ -1,0 +1,22 @@
+-# .album-show__info__tags
+-#   - @album.review.tags.each do |tag|
+-#     = tag.name
+-# .review__content
+-#   = simple_format(@album.review.content)
+
+
+
+-# %ul.comments#comments
+-#   - @album.review.comments.each do |comment|
+-#     %li.comment
+-#       .comment__user-nickname
+-#         = comment.user.nickname
+-#       .comment__content
+-#         = simple_format(h(comment.content))
+-#       .comment__time
+-#         = l comment.created_at, format: :short
+
+-# .post-comment
+-#   = form_with model: [@review, @comment], id: 'comment-form' do |f|
+-#     = f.text_area :content
+-#     = f.submit '投稿！', id: 'post-comment__submit', data: {'disabled-with': '投稿中…'}
