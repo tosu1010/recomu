@@ -47,7 +47,7 @@
               = link_to review_path(review), class: 'review__link' do
                 .review__content
                   .review__content__text
-                    = review.content
+                    = simple_format(review.content)
               .like{id: "like--#{review.id}"}
                 = render partial: 'likes/like', locals: {review: review}
 

@@ -1,0 +1,26 @@
+.like {
+  font-size: 16px;
+  text-align: right;
+  margin-right: 30px;
+  
+  &__button {
+    padding: 1px 5px;
+  }
+
+  &__icon {
+    color: #FF0000;
+
+    &--liked {
+      color: #FF0000;
+    }
+  }
+
+  .clicked {
+    animation: turn-heart 0.5s alternate;
+
+    @keyframes turn-heart {
+      0% {transform: rotateY(0deg);}
+      100% {transform: rotateY(540deg);}
+    }
+  }
+}
