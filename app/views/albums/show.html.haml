@@ -5,32 +5,33 @@
     .upper
       = render partial: 'album_info', locals: {album: @album, tracks: @tracks}
       
-      .border-radius
-        .reviews
-          .reviews__header
-            Reviews
-          - @album.reviews.each do |review|
-            .review
-              .review__user-name
-                = review.user.nickname
-              %ul.review__tags
-                - review.tags.each do |tag|
-                  %li.review__tags__tag
-                    = tag.name
-              = link_to review_path(review), class: 'review__link' do
-                .review__content
-                  .review__content__text
-                    = simple_format(review.content)
+      .border-radius.pjax-wrapper
+        #pjax-container
+          .reviews
+            .reviews__header
+              Reviews
+            - @album.reviews.each do |review|
+              .review
+                .review__user-name
+                  = review.user.nickname
+                %ul.review__tags
+                  - review.tags.each do |tag|
+                    %li.review__tags__tag
+                      = tag.name
+                = link_to review_path(review), class: 'review__link js-pjax' do
+                  .review__content
+                    .review__content__text
+                      = simple_format(review.content)
 
-              %ul.review__bottom
-                %li.comment-icon.js-modal-open{data: {target: "modal--#{review.id}"}}
-                  = fa_icon 'comment-o', class: 'comment-icon__icon'
-                  %span.comment-icon__count
-                    = review.comments.count
-                %li.like{id: "like--#{review.id}"}
-                  = render partial: 'likes/like', locals: {review: review}
-              
-              = render partial: 'comments/modal', locals: {review: review}
+                %ul.review__bottom
+                  %li.comment-icon.js-modal-open{data: {target: "modal--#{review.id}"}}
+                    = fa_icon 'comment-o', class: 'comment-icon__icon'
+                    %span.comment-icon__count
+                      = review.comments.count
+                  %li.like{id: "like--#{review.id}"}
+                    = render partial: 'likes/like', locals: {review: review}
+                
+                = render partial: 'comments/modal', locals: {review: review}
 
     .bottom  
       .another-albums
