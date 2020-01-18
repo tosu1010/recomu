@@ -1,0 +1,14 @@
+.comment-icon {
+  display: inline-block;
+  margin-right: 10px;
+
+  &__icon {
+    cursor: pointer;
+    font-size: 18px;
+    margin-right: 3px;
+  }
+
+  &__count {
+    font-size: 16px;
+  }
+}

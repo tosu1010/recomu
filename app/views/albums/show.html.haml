@@ -3,55 +3,35 @@
 .wrapper
   .album-show
     .upper
-      .album-show__detail
-        .album-show__detail__album-image
-          = image_tag @album.image, class: 'album-show__detail__album-image__image'
-        .album-show__detail__info
-          .album-show__detail__info__album-title
-            = @album.title
-          .album-show__detail__info__artist-name
-            = @album.artist.name
-        .tracks
-          - if @tracks
-            .tracks__header
-              .tracks__header__track
-                Tracks
-              .tracks__header__sample
-                Sample
-            - @tracks.each do |track|
-              .track
-                .track__info
-                  .track__info__number
-                    = "#{track.track_number}."
-                  .track__info__name
-                    = track.name
-                - if track.preview_url
-                  .track__audio
-                    = button_tag type: 'button', class: 'track__audio__button' do
-                      = fa_icon 'play-circle'
-                    = button_tag type: 'button', class: 'track__audio__button--stop' do
-                      = fa_icon 'pause-circle'
-                    %audio{src: "#{track.preview_url}", class: "prev-audio"}
-
+      = render partial: 'album_info', locals: {album: @album, tracks: @tracks}
       
-      .border-radius
-        .reviews
-          .reviews__header
-            Reviews
-          - @album.reviews.each do |review|
-            .review
-              .review__user-name
-                = review.user.nickname
-              %ul.review__tags
-                - review.tags.each do |tag|
-                  %li.review__tags__tag
-                    = tag.name
-              = link_to review_path(review), class: 'review__link' do
-                .review__content
-                  .review__content__text
-                    = simple_format(review.content)
-              .like{id: "like--#{review.id}"}
-                = render partial: 'likes/like', locals: {review: review}
+      .border-radius.pjax-wrapper
+        #pjax-container
+          .reviews
+            .reviews__header
+              Reviews
+            - @album.reviews.each do |review|
+              .review
+                .review__user-name
+                  = review.user.nickname
+                %ul.review__tags
+                  - review.tags.each do |tag|
+                    %li.review__tags__tag
+                      = tag.name
+                = link_to review_path(review), class: 'review__link js-pjax' do
+                  .review__content
+                    .review__content__text
+                      = simple_format(review.content)
+
+                %ul.review__bottom
+                  %li.comment-icon.js-modal-open{data: {target: "modal--#{review.id}"}}
+                    = fa_icon 'comment-o', class: 'comment-icon__icon'
+                    %span.comment-icon__count
+                      = review.comments.count
+                  %li.like{id: "like--#{review.id}"}
+                    = render partial: 'likes/like', locals: {review: review}
+                
+                = render partial: 'comments/modal', locals: {review: review}
 
     .bottom  
       .another-albums
@@ -72,5 +52,5 @@
                   .album-info
                     .album-info__album-title
                       = another_album.title
-
+  
   = render 'layouts/post'

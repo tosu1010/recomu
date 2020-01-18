@@ -1,0 +1,109 @@
+.review {
+  border-bottom: dashed 1px $border_color;
+  padding: 0 0 10px 10px;
+  margin-right: 10px;
+
+  &__header {
+    font-size: 20px;
+    margin: 5px 20px 0 0;
+    padding-bottom: 2px;
+    border-bottom: solid 1px $border_color;
+  }
+  
+  &__info {
+    margin-top: 10px;
+
+    &__user-name {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    &__tags {
+      font-size: 0;
+      margin-left: 5px;
+      
+      &__tag {
+        overflow: hidden;
+        white-space: nowrap;
+        height: 20px;
+        max-width: 120px;
+        min-width: 60px;
+        text-align: center;
+        line-height: 10px;
+        font-size: 12px;
+        display: inline-block;
+        margin-right: 5px;
+        background-color: #C0C0C0;
+        padding: 5px;
+        border-radius: 15px;
+      }
+    }
+  }
+
+  &__content {
+    font-size: 18px;
+    margin-top: 5px;
+  }
+
+  &__bottom {
+    text-align: right;
+    font-size: 0;
+  }
+}
+
+.comments {
+  font-size: 16px;
+  overflow-y: scroll;
+  max-height: 500px;
+  
+  .comment {
+    padding: 10px;
+    border-bottom: dotted 1px #C0C0C0;
+
+    &:last-child {
+      border-bottom: none;
+    }
+    
+    &__user-name {
+      font-size: 16px;
+      font-weight: 500;
+      display: inline-block;
+    }
+    
+    &__time {
+      font-size: 12px;
+      display: inline-block;
+      margin-left: 20px;
+    }
+    
+    &__content {
+      font-size: 14px;
+    }
+  }
+}
+
+.post-comment {
+  padding: 10px 15px 0 15px;
+  border-top: double 3px #000000;
+  margin-right: 10px;
+
+  &__text {
+    width: 100%;
+    min-height: 70px;
+    padding: 5px;
+  }
+
+  &__submit {
+    text-align: right;
+    margin-top: 5px;
+
+    &__button {
+      background-color: #A25960;
+      color: #FFF6FF;
+      border-radius: 5px;
+      padding: 3px 5px;
+      font-weight: 600;
+    }
+  }
+}
+

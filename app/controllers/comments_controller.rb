@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
     if @comment.save
       respond_to do |format|
         format.json
+        format.html { redirect_to review_path(@review) }
       end
     else
       flash[:alert] = '文字を入力してください'

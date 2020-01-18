@@ -3,16 +3,16 @@ $(document).ready(function() {
     function buildHTML(comment){
       let content = comment.content.replace(/\n/g, '<br>');
       let html = `<li class="comment">
-                    <div class="comment__user-nickname">
+                    <div class="comment__user-name">
                       ${comment.user_name}
+                    </div>
+                    <div class="comment__time">
+                      ${comment.created_at}
                     </div>
                     <div class="comment__content">
                       <p>
                         ${content}
                       </p>
-                    </div>
-                    <div class="comment__time">
-                      ${comment.created_at}
                     </div>
                   </li>`
   
@@ -21,7 +21,7 @@ $(document).ready(function() {
 
     $(document).on('ajax:success', '#comment-form', function(data){
       let html = buildHTML(data.detail[0]);
-      $('#comments').append(html);
+      $('#comments').prepend(html);
       $('#comment-form')[0].reset();
       $('#post-comment__submit').removeAttr('disabled');
     });

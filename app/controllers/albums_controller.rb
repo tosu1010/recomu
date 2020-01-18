@@ -8,7 +8,8 @@ class AlbumsController < ApplicationController
   end
 
   def show
-    @album = Album.includes(:artist, reviews: :tags).find(params[:id])
+    @album = Album.includes(:artist, reviews: [:tags, :likes]).find(params[:id])
     @tracks = @album.spotify_id ? get_tracks(@album.spotify_id) : nil
+    @comment = Comment.new
   end
 end
