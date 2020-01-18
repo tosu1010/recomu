@@ -30,5 +30,9 @@ $(document).on('turbolinks:load', function(){
         'opacity': '1',
       }, 'slow')
     })
+
+    $(document).on('pjax:popstate', function(){
+      window.location.reload();
+    });
   });
 });
