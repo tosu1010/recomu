@@ -21,7 +21,7 @@ $(document).ready(function() {
 
     $(document).on('ajax:success', '#comment-form', function(data){
       let html = buildHTML(data.detail[0]);
-      $('#comments').append(html);
+      $('#comments').prepend(html);
       $('#comment-form')[0].reset();
       $('#post-comment__submit').removeAttr('disabled');
     });

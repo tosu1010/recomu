@@ -1,0 +1,24 @@
+.modal.js-modal{id: "modal--#{review.id}"}
+  .modal__bg.js-modal-close
+  .modal__content
+
+    .modal__content__close
+      = link_to '', class: 'js-modal-close' do
+        = fa_icon 'close', class: 'modal__content__close__icon'
+    
+    .modal__content__review
+      .modal__content__review__info
+        .modal__content__review__info__user-name
+          = review.user.nickname
+        .modal__content__review__info__tags
+          - review.tags.each do |tag|
+            .modal__content__review__info__tags__tag
+              = tag.name
+      .modal__content__review__content
+        = simple_format(review.content)
+    
+    .post-comment
+      = form_with model: [review, @comment], local: true do |f|
+        = f.text_area :content, class: 'post-comment__text'
+        .post-comment__submit
+          = f.submit 'Comment', class: 'post-comment__submit__button', data: {'disabled-with': '投稿中…'}

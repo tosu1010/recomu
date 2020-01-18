@@ -59,6 +59,11 @@
         font-size: 18px;
         margin-top: 5px;
       }
+
+      &__bottom {
+        text-align: right;
+        font-size: 0;
+      }
     }
 
     .comments {

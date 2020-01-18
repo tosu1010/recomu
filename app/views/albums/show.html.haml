@@ -21,8 +21,16 @@
                 .review__content
                   .review__content__text
                     = simple_format(review.content)
-              .like{id: "like--#{review.id}"}
-                = render partial: 'likes/like', locals: {review: review}
+
+              %ul.review__bottom
+                %li.comment-icon.js-modal-open{data: {target: "modal--#{review.id}"}}
+                  = fa_icon 'comment-o', class: 'comment-icon__icon'
+                  %span.comment-icon__count
+                    = review.comments.count
+                %li.like{id: "like--#{review.id}"}
+                  = render partial: 'likes/like', locals: {review: review}
+              
+              = render partial: 'comments/modal', locals: {review: review}
 
     .bottom  
       .another-albums
@@ -43,5 +51,5 @@
                   .album-info
                     .album-info__album-title
                       = another_album.title
-
+  
   = render 'layouts/post'

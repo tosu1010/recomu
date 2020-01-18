@@ -3,7 +3,7 @@
 .wrapper
   .review-show
     .upper
-      = render partial: 'albums/album_info', locals: {album: @album, tracks: @tracks}
+      = render partial: 'albums/album_info', locals: {album: @review.album, tracks: @tracks}
 
       .review-comment
         .review
@@ -20,11 +20,17 @@
           .review__content
             = simple_format(@review.content)
           
-          .like{id: "like--#{@review.id}"}
-            = render partial: 'likes/like', locals: {review: @review}
+          %ul.review__bottom
+            %li.comment-icon
+              = fa_icon 'comment-o', class: 'comment-icon__icon'
+              %span.comment-icon__count
+                = @review.comments.count
+          
+            %li.like{id: "like--#{@review.id}"}
+              = render partial: 'likes/like', locals: {review: @review}
         
         %ul.comments#comments
-          - @review.comments.each do |comment|
+          - @review.comments.reverse_each do |comment|
             %li.comment
               .comment__user-name
                 = comment.user.nickname
