@@ -1,0 +1,12 @@
+@mixin header-line($width) {
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    display: inline-block;
+    width: $width;
+    height: 2px;
+    background-color: $border_color;
+  }
+}
