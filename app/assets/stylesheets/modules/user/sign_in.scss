@@ -1,0 +1,50 @@
+.sign-in {
+  &__header {
+    position: relative;
+    margin-bottom: 15px;
+    font-size: 28px;
+    @include header-line(100px);
+  }
+
+  &__form {
+    &__field {
+      margin-bottom: 10px;
+      
+      &__label {
+        margin-bottom: 10px;
+      }
+
+      &__text-field {
+        border-radius: 5px;
+        border: inset 1px;
+        padding: 2px;
+        font-size: 14px;
+        width: 200px;
+
+        &:focus {
+          outline: none;
+          border: solid 1px $focus_color;
+        }
+      }
+
+      .field_with_errors {
+        display: inline-block;
+        color: red;
+      }
+    }
+    
+    &__action {
+      &__submit {
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 30px;
+        background-color: #A25960;
+        width: 80px;
+        border-radius: 5px;
+        color: #FFF6FF;
+        display: block;
+        margin-top: 10px;
+      }
+    }
+  }
+}
