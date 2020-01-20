@@ -4,16 +4,7 @@
     margin-bottom: 25px;
     position: relative;
     
-    &:before {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -5px;
-      display: inline-block;
-      width: 150px;
-      height: 2px;
-      background-color: $border_color;
-    }
+    @include header-line(150px)
   }
 
   .review-form {
