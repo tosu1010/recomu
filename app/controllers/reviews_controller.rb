@@ -1,6 +1,8 @@
 class ReviewsController < ApplicationController
   include SpotifyMethod
 
+  before_action :spotify_auth, only: [:create, :show]
+
   def index
     
   end
@@ -10,8 +12,6 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    spotify_auth
-    
     artist_info = get_artist_spotify(review_params[:artist])
     artist_spotify_id = artist_info ? artist_info.id : nil
 
