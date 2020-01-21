@@ -1,9 +1,9 @@
 $(function(){
   // 再生処理
   $(document).on('click', '.track__audio__button', function() {
-    let audio = $(this).siblings('.prev-audio')[0]
+    let audio = $(this).siblings('.prev-audio')[0];
     audio.play();
-    $(this).hide()
+    $(this).hide();
     $(this).siblings('.track__audio__button--stop').show();
 
     // 再生終了時のリセット処理
