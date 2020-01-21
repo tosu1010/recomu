@@ -24,9 +24,9 @@ module SpotifyMethod
         album = artist.albums(album_type: 'compilation', limit: 50).find { |album| album.name.include?(album_name) }
         unless album
           album_name = "*#{album_name.gsub(/\s/, '%20')}*"
-          album = RSpotify::Album.search(album_name).map { |album| 
-                    album.artists.find { |artist| 
-                      artist.id == artist_spotify_id }
+          album = RSpotify::Album.search(album_name).map { |search_album| 
+                    search_album.artists.find { |search_artist| 
+                      search_artist.id == artist_spotify_id }
                     }[0]
         end
       end
