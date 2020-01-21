@@ -8,7 +8,7 @@
     overflow: hidden;
     background-color: #FFF6FF;
 
-    @media screen and (max-width: $middle){
+    @media screen and (max-width: $min){
       float: none;
       width: 100%;
       margin-top: 20px;
@@ -19,7 +19,7 @@
       overflow-y: scroll;
       border-radius: 10px;
 
-      @media screen and (max-width: $middle) {
+      @media screen and (max-width: $min) {
         min-height: 100px;
         max-height: 500px;
       }

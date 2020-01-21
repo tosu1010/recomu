@@ -18,7 +18,7 @@
       height: 200px;
       position: relative;
 
-      @media screen and (max-width: $middle) {
+      @media screen and (max-width: $min) {
         width: 120px;
         height: 120px;
       }
