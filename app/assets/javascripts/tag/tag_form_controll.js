@@ -4,7 +4,7 @@ $(function(){
   `
   <div class="review-form__tag__add-button">
     <button name="button" type="button" class="tag-button--add" id="tag-add-button">
-      タグを追加
+      Add Tag
     </button>
   </div>
   `
@@ -15,7 +15,7 @@ $(function(){
     <div class="review-form__tag__container">
       <input class="review-form__text-field--tag" type="text" name="tags[]" id="tag-field">
       <button name="button" type="button" class="tag-button--remove" id="tag-remove-button">
-        削除
+        Remove
       </button>
       <div class="tags-incremental">
        </div>

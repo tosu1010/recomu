@@ -11,10 +11,12 @@
                 = image_tag album.image, class: 'album__album-image__image'
               - else
                 = image_tag 'no_image.png', class: 'album__album-image__image'
-            .album__info
+            .album__info.over-
               .album__info__album-title
-                = album.title
+                %span.over-scroll
+                  = album.title
               .album__info__artist-name
-                = album.artist.name
+                %span.over-scroll
+                  = album.artist.name
 
 = render partial: 'layouts/post'

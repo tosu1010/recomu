@@ -44,3 +44,5 @@
               = f.text_area :content, class: 'post-comment__text'
               .post-comment__submit
                 = f.submit 'Comment', class: 'post-comment__submit__button',id: 'post-comment__submit', data: {'disabled-with': '投稿中…'}
+    .bottom
+      = render partial: 'albums/another-albums', locals: {album: @review.album}
