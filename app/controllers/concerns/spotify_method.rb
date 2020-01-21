@@ -6,9 +6,7 @@ module SpotifyMethod
     client_id = Rails.application.credentials.spotify[:client_id]
     client_secret = Rails.application.credentials.spotify[:client_secret]
     # spotifyの認証を通っていなかった場合は、sessionに保存する
-    if session[:spotify_auth]
-      session[:spotify_auth] = RSpotify.authenticate(client_id, client_secret)
-    end
+    session[:spotify_auth] = RSpotify.authenticate(client_id , client_secret) unless session[:spotify_auth]
   end
 
   # artistのspotify_idを取得する
