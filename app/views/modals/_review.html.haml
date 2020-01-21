@@ -2,6 +2,9 @@
   .modal__bg.js-modal-close
 
   .modal__content
+    .modal__content__close
+      = link_to '', class: 'js-modal-close' do
+        = fa_icon 'close', class: 'modal__content__close__icon'
     .create-review__header
       Post Review
     = form_with url: reviews_path, class: "review-form" do |f|
