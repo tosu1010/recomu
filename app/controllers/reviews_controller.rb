@@ -35,6 +35,7 @@ class ReviewsController < ApplicationController
     end
       redirect_to root_path
     rescue => e
+      puts e
       redirect_to new_review_path
   end
 
