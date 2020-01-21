@@ -4,7 +4,7 @@ class AlbumsController < ApplicationController
   before_action :spotify_auth, only: [:show]
 
   def index
-    @albums = Album.all.includes(:artist)
+    @albums = Album.all.order(id: 'DESC').includes(:artist)
   end
 
   def show

@@ -33,6 +33,14 @@
     transition: .4s;
     pointer-events: auto;
 
+    &:hover {
+      background-color: #da612c;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
     @media screen and (max-width: $middle) {
       width: 100px;
       height: 100px;
@@ -44,8 +52,5 @@
       position: relative;
       bottom: 10%;
     }
-  }
-  &__button:hover {
-    background-color: #da612c;
   }
 }

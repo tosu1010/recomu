@@ -10,7 +10,7 @@
           .reviews
             .reviews__header
               Reviews
-            - @album.reviews.each do |review|
+            - @album.reviews.reverse.each do |review|
               .review
                 .review__user-name
                   = review.user.nickname
@@ -31,7 +31,7 @@
                   %li.like{id: "like--#{review.id}"}
                     = render partial: 'likes/like', locals: {review: review}
                 
-                = render partial: 'comments/modal', locals: {review: review}
+                = render partial: 'modals/comment', locals: {review: review}
 
     .bottom  
       .another-albums
@@ -53,4 +53,10 @@
                     .album-info__album-title
                       = another_album.title
   
-  = render 'layouts/post'
+  .post
+    = button_tag '', class: "post__button", id: 'js-modal-review' do
+      = fa_icon "edit", class: 'post__button__edit'
+      %p.post__button__message
+        Post
+  
+  = render partial: 'modals/review', locals: {album: @album}

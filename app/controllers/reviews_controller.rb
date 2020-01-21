@@ -33,11 +33,8 @@ class ReviewsController < ApplicationController
         ReviewsTag.create!(review_id: review.id, tag_id: tag_record.id)
       end
     end
-      flash[:success] = "登録しました！"
       redirect_to root_path
     rescue => e
-      puts e
-      flash[:failed] = e
       redirect_to new_review_path
   end
 
