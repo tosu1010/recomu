@@ -1,0 +1,10 @@
+.over-scroll--scroll {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scrollAnime 10s linear infinite;
+}
+
+@keyframes scrollAnime{
+  0% { transform: translateX(0)}
+  100% { transform: translateX(-100%)}
+}

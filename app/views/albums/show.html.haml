@@ -10,7 +10,7 @@
           .reviews
             .reviews__header
               Reviews
-            - @album.reviews.each do |review|
+            - @album.reviews.reverse.each do |review|
               .review
                 .review__user-name
                   = review.user.nickname
@@ -31,26 +31,15 @@
                   %li.like{id: "like--#{review.id}"}
                     = render partial: 'likes/like', locals: {review: review}
                 
-                = render partial: 'comments/modal', locals: {review: review}
+                = render partial: 'modals/comment', locals: {review: review}
 
     .bottom  
-      .another-albums
-        .another-albums__header
-          = @album.artist.name
-          %span
-            の他のアルバム
-        .another-albums__container
-          - if @album.another_albums().present?
-            - @album.another_albums().each do |another_album|
-              .another-albums__container__album
-                = link_to album_path(another_album) do
-                  .album-image
-                  - if another_album.image.present?
-                    = image_tag another_album.image, class: 'album-image__content'
-                  - else
-                    = image_tag 'no_image.png', class: 'album-image__content'
-                  .album-info
-                    .album-info__album-title
-                      = another_album.title
+      = render partial: 'another-albums', locals: {album: @album}
   
-  = render 'layouts/post'
+  .post
+    = button_tag '', class: "post__button", id: 'js-modal-review' do
+      = fa_icon "edit", class: 'post__button__edit'
+      %p.post__button__message
+        Post
+  
+  = render partial: 'modals/review', locals: {album: @album}

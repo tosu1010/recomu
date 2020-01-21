@@ -1,6 +1,8 @@
 class ReviewsController < ApplicationController
   include SpotifyMethod
 
+  before_action :spotify_auth, only: [:create, :show]
+
   def index
     
   end
@@ -10,8 +12,6 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    spotify_auth
-    
     artist_info = get_artist_spotify(review_params[:artist])
     artist_spotify_id = artist_info ? artist_info.id : nil
 
@@ -33,11 +33,8 @@ class ReviewsController < ApplicationController
         ReviewsTag.create!(review_id: review.id, tag_id: tag_record.id)
       end
     end
-      flash[:success] = "登録しました！"
       redirect_to root_path
     rescue => e
-      puts e
-      flash[:failed] = e
       redirect_to new_review_path
   end
 
