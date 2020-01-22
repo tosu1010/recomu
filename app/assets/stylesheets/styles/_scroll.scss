@@ -2,6 +2,10 @@
   display: inline-block;
   white-space: nowrap;
   animation: scrollAnime 10s linear infinite;
+
+  @media screen {
+    animation: scrollAnime 20s linear infinite;
+  }
 }
 
 @keyframes scrollAnime{

@@ -18,10 +18,10 @@
       position: relative;
       box-shadow: 3px 3px 3px #555555;
 
-      @media screen and (max-width: $wide) {
-        margin-right: 40px;
-        height: 100px;
-        width: 100px;
+      @media screen and (max-width: $middle) {
+        margin-right: 20px;
+        height: 80px;
+        width: 80px;
       }
 
       &__album-image {
@@ -46,14 +46,30 @@
         text-align: left;
         opacity: .85;
 
+        @media screen and (max-width: $middle){
+          display: block;
+          max-width: 60px;
+          min-width: 50px;
+        }
+
         &__album-title {
           overflow: hidden;
           font-size: 12px;
+
+          @media screen and (max-width: $middle){
+            font-size: 8px;
+            line-height: 1.2;
+          }
         }
 
         &__artist-name {
           overflow: hidden;
           font-size: 10px;
+
+          @media screen and (max-width: $middle){
+            font-size: 6px;
+            line-height: 1.2;
+          }
         }
       }
 
@@ -62,6 +78,16 @@
         
         .album__info {
           display: block;
+        }
+      }
+
+      @media screen and (max-width: $middle){
+        &:active {
+          transform: scale(1.1);
+          
+          .album__info {
+            display: block;
+          }
         }
       }
     }
