@@ -4,14 +4,11 @@
   .recomu-top
     .albums
       - @albums.each do |album|
-        .album
+        .album{ontouchstart: ''}
           = link_to album_path(album) do
             .album__album-image
-              - if album.image.present?
-                = image_tag album.image, class: 'album__album-image__image'
-              - else
-                = image_tag 'no_image.png', class: 'album__album-image__image'
-            .album__info.over-
+              = image_tag album.image, class: 'album__album-image__image'
+            .album__info
               .album__info__album-title
                 %span.over-scroll
                   = album.title
