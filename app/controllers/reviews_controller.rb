@@ -1,8 +1,5 @@
 class ReviewsController < ApplicationController
   include SpotifyMethod
-
-  before_action :spotify_auth, only: [:create, :show]
-
   def index
     
   end
