@@ -18,5 +18,7 @@ module Recomu
 
     config.i18n.default_locale = :ja
     config.time_zone = 'Asia/Tokyo'
+
+    RSpotify::authenticate(Rails.application.credentials.spotify[:client_id], Rails.application.credentials.spotify[:client_secret])
   end
 end
