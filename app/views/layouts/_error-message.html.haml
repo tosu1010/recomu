@@ -1,0 +1,3 @@
+- if model.errors.any?
+  .error-messages
+    = model.errors.full_messages_for(column.to_sym)[0]

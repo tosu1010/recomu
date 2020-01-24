@@ -1,0 +1,28 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      artist: アーティスト
+      album: アルバム
+      tag: タグ
+      review: レビュー
+    attributes:
+      user:
+        nickname: ユーザーネーム
+        email: メールアドレス
+        password: パスワード
+      artist:
+        name: アーティスト名
+      album:
+        title: アルバム / シングル名
+      review:
+        content: レビュー
+      tag:
+        name: タグ
+  
+  activemodel:
+    attributes:
+      review_form:
+        artist_name: アーティスト名
+        album_name: アルバム名
+        review_content: レビュー

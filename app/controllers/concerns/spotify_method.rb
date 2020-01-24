@@ -1,12 +1,12 @@
 module SpotifyMethod
   extend ActiveSupport::Concern
   
-  # artistのspotify_idを取得する
+  # artistのspotify情報取得する
   def get_artist_spotify(artist_name)
-    artist = RSpotify::Artist.search(artist_name).first
+    artist_name.present? ? RSpotify::Artist.search(artist_name).first : nil
   end
 
-  # 引数に渡したalbumのspotify_idを取得する
+  # 引数に渡したalbumのspotify情報を取得する
   def get_album_spotify(artist_spotify_id, album_name)
     artist = RSpotify::Artist.find(artist_spotify_id)
     album = artist.albums(album_type: 'single', limit: 50).find { |album| album.name.include?(album_name) }
@@ -29,7 +29,7 @@ module SpotifyMethod
   # アルバムの画像を探す
   def get_album_image(album_spotify_id)
     image = RSpotify::Album.find(album_spotify_id)
-    image ? image.images[0]['url'] : 'no_image.png'
+    image.images[0]['url']
   end
 
   # トラックの取得

@@ -15,4 +15,8 @@ class Album < ApplicationRecord
     artist.albums.where.not(id: self.id)
   end
 
+  with_options presence: true do
+    validates :title
+    validates :artist_id
+  end
 end
