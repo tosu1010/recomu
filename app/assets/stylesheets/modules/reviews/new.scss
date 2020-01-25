@@ -12,11 +12,12 @@
 
     &__label {
       font-size: 18px;
-      display: block;
+      display: inline-block;
       margin-bottom: 5px;
     }
 
     &__text-field {
+      display: block;
       height: 30px;
       width: 50%;
       line-height: 20px;
