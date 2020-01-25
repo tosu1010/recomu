@@ -1,0 +1,5 @@
+- if model.errors.full_messages_for(column.to_sym).present?
+  .error-messages
+    %span
+      *
+    = model.errors.full_messages_for(column.to_sym)[0]

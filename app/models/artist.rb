@@ -8,4 +8,6 @@ class Artist < ApplicationRecord
     end
     artist
   end
+
+  validates :name, presence: true
 end
