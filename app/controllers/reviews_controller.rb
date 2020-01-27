@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
   include SpotifyMethod
   def index
-    
+
   end
 
   def new
@@ -22,6 +22,11 @@ class ReviewsController < ApplicationController
     @review = Review.includes(:album).find(params[:id])
     @comment = Comment.new
     @tracks = @review.album.spotify_id ? get_tracks(@review.album.spotify_id) : nil
+  end
+
+  def destroy
+    review = Review.find_by(params[:id])
+    review.destroy
   end
 
   private

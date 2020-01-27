@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :albums, only: [:index, :show]
 
-  resources :reviews, only: [:index, :new, :create, :show] do
+  resources :reviews, only: [:index, :new, :create, :show, :destroy] do
     resources :likes, only: [:create, :destroy]
     resources :comments, only: [:create, :new]
   end

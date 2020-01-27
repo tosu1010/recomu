@@ -1,12 +1,8 @@
-$(function(){
-  function addToNewUrl() {
-    let path = location.pathname;
-    let pattern = /^.*\/new.*$/
-  
-    if (path.match(pattern)) return;
-  
-    history.replaceState('', '', `${ path }/new`)
-  }
+function addToNewUrl() {
+  let path = location.pathname;
+  let pattern = /^.*\/new.*$/
 
-  window.onload = addToNewUrl();
-});
+  if (path.match(pattern)) return;
+
+  history.replaceState('', '', `${ path }/new`)
+}
