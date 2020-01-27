@@ -1,0 +1,58 @@
+.delete-review {
+  &__window {
+    &__header {
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    &__text {
+      font-size: 18px;
+      padding: 10px 0;
+    }
+
+    &__button {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 10px;
+      font-size: 16px;
+      line-height: 30px;
+
+      &--cancel {
+        display: inline-block;
+        background-color: #444444;
+        border-radius: 50px;
+        width: 120px;
+        text-align: center;
+
+        &:hover {
+          opacity: 0.8;
+        }
+
+        &__link {
+          color: white;
+          display: block;
+          padding: 5px 20px;
+        }
+      }
+
+      &--delete {
+        display: inline-block;
+        background-color: #df0f51;
+        color: white;
+        border-radius: 50px;
+        width: 120px;
+        text-align: center;
+
+        &:hover {
+          opacity: 0.8;
+        }
+
+        &__link {
+          padding: 5px 20px;
+          color: white;
+          display: block;
+        }
+      }
+    }
+  }
+}

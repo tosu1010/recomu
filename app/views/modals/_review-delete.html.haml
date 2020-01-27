@@ -2,13 +2,15 @@
   .modal__bg.js-modal-close
 
   .modal__content
-    .modal__content__window
-      .modal__content__window__header
+    .delete-review__window
+      .delete-review__window__header
         レビューを削除しますか？
-      .modal__content__window__text
+      .delete-review__window__text
         この操作は取り消せません。本当に削除しますか？
-      .modal__content__window__button
-        .modal__content__window__button--cancel
-          = link_to 'キャンセル', class: 'modal__content__window__button--cancel__button js-modal-close'
-        .modal__content__window__button--delete
-          = link_to '削除', review_path(review), class: 'modal__content__window__button--delete__button', method: :destroy
+      .delete-review__window__button
+        .delete-review__window__button--cancel
+          = link_to '', class: 'delete-review__window__button--cancel__link js-modal-close' do
+            キャンセル
+        .delete-review__window__button--delete
+          = link_to review_path(review), class: 'delete-review__window__button--delete__link', method: :delete do
+            削除
