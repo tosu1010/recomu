@@ -24,22 +24,37 @@
                       = simple_format(review.content)
 
                 %ul.review__bottom
-                  %li.comment-icon.js-modal-open{data: {target: "modal--#{review.id}"}}
-                    = fa_icon 'comment-o', class: 'comment-icon__icon'
-                    %span.comment-icon__count
-                      = review.comments.count
-                  %li.like{id: "like--#{review.id}"}
-                    = render partial: 'likes/like', locals: {review: review}
-                
+                  .review__bottom--left
+                    - if user_signed_in?
+                      - if review.user.id == current_user.id
+                        %li.review-delete.js-modal-delete-review{data: {target: "modal--delete-review__#{review.id}"}}
+                          = fa_icon 'trash', class: 'review-delete__icon'
+
+                  .review__bottom--right
+                    %li.comment-icon.js-modal-open{data: {target: "modal--#{review.id}"}}
+                      = fa_icon 'comment-o', class: 'comment-icon__icon'
+                      %span.comment-icon__count
+                        = review.comments.count
+                    %li.like{id: "like--#{review.id}"}
+                      = render partial: 'likes/like', locals: {review: review}
+                  
                 = render partial: 'modals/comment', locals: {review: review}
+                = render partial: 'modals/review-delete', locals: {review: review}
+
+
+          .post
+            - if user_signed_in?
+              = button_tag '', class: "post__button", id: 'js-modal-review' do
+                = fa_icon "edit", class: 'post__button__edit'
+                %p.post__button__message
+                  Post
+            - else
+              = link_to new_user_session_path, class: 'post__button' do
+                = fa_icon "edit", class: 'post__button__edit'
+                %p.post__button__message
+                  Post
 
     .bottom  
       = render partial: 'another-albums', locals: {album: @album}
-  
-  .post
-    = button_tag '', class: "post__button", id: 'js-modal-review' do
-      = fa_icon "edit", class: 'post__button__edit'
-      %p.post__button__message
-        Post
   
   = render partial: 'modals/review', locals: {album: @album}

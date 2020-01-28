@@ -1,0 +1,11 @@
+.review-delete {
+  font-size: 20px;
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: top;
+  
+  &__icon {
+    color: #666666;
+    cursor: pointer;
+  }
+}
