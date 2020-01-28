@@ -10,4 +10,5 @@
     %script{src: '//cdnjs.cloudflare.com/ajax/libs/jquery.pjax/1.9.6/jquery.pjax.js'}
     %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
   %body{ontouchstart: ''}
+    = render partial: 'layouts/flash_messages'
     = yield

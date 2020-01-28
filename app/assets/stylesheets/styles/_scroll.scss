@@ -1,10 +1,10 @@
 .over-scroll--scroll {
   display: inline-block;
   white-space: nowrap;
-  animation: scrollAnime 10s linear infinite;
+  animation: scrollAnime 10s linear 5s 3;
 
   @media screen {
-    animation: scrollAnime 20s linear infinite;
+    animation: scrollAnime 20s linear 5s 3;
   }
 }
 

@@ -1,0 +1,5 @@
+- if flash.present?
+  .flash-wrapper
+    - flash.each do | message_type, message |
+      %div{class: "alert alert--#{message_type}"}
+        = message
