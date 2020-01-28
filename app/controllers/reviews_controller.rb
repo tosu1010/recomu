@@ -6,7 +6,10 @@ class ReviewsController < ApplicationController
 
   def new
     @review_form = ReviewForm.new
-    redirect_to new_user_session_path unless user_signed_in?
+    unless user_signed_in?
+      flash[:alert] = 'ログインが必要です'
+      redirect_to new_user_session_path
+    end
   end
 
   def create
