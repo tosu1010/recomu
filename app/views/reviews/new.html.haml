@@ -20,9 +20,9 @@
         = f.text_field :album_name, class: "review-form__text-field"
       
       .review-form__tag
-        = f.label :"tags[]", "Tags", class: "review-form__label", for: 'tag-field'
+        = f.label :name, "Tags", class: "review-form__label", for: 'tag-field', name: "review_form[tags][]"
         .review-form__tag__container
-          = f.text_field :"tags[]", class: "review-form__text-field--tag", id: 'tag-field'
+          = f.text_field :name, class: "review-form__text-field--tag", id: 'tag-field', name: "review_form[tags][]"
           .tags-incremental
 
       .review-form__tag__add-button

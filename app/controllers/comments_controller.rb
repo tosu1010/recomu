@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
         flash[:alert] = '文字を入力してください'
       end
     else
+      flash[:alert] = 'ログインが必要です'
       redirect_to new_user_session_path
     end
   end

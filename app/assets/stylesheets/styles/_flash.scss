@@ -4,16 +4,20 @@
   position: fixed;
   margin-bottom: 10px;
   z-index: 999;
-  animation: fade-out 1s linear 5s forwards;
-  visibility: visible;
+  animation: fade-in-out 5s ease-out forwards;
+  visibility: hidden;
 
-  @-webkit-keyframes fade-out {
-    0% {visibility: visible; opacity: 1;}
+  @-webkit-keyframes fade-in-out {
+    0% {visibility: hidden; opacity: 0;}
+    20% {visibility: visible; opacity: 1;}
+    80% {visibility: visible; opacity: 1;}
     100% {visibility: hidden; opacity: 0;}
   }
   
-  @keyframes fade-out {
-    0% {visibility: visible; opacity: 1;}
+  @keyframes fade-in-out {
+    0% {visibility: hidden; opacity: 0;}
+    20% {visibility: visible; opacity: 1;}
+    80% {visibility: visible; opacity: 1;}
     100% {visibility: hidden; opacity: 0;}
   }
 
@@ -27,6 +31,11 @@
     &--notice {
       background-color: #DFF0D8;
       color: #3C763D;
+    }
+    
+    &--alert {
+      background-color: #FCF8E3;
+      color: #8A6D3B;
     }
 
     &--warning {
