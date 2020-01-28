@@ -12,7 +12,7 @@ class Album < ApplicationRecord
 
   def another_albums()
     artist = self.artist
-    artist.albums.where.not(id: self.id)
+    artist.albums.where.not(id: self.id).select { |album| album.reviews.count > 0 }
   end
 
   with_options presence: true do

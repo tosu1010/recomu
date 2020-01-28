@@ -1,0 +1,33 @@
+.create-review
+  .create-review__header
+    Post Review
+  = form_with model: review_form, url: reviews_path, class: "review-form" do |f|
+    .review-form__artist
+      = f.label :artist_name, "Artist", class: "review-form__label"
+      = render partial: 'layouts/error-message', locals: {model: review_form, column: 'artist_name'}
+      - if controller.action_name == 'new'
+        = f.text_field :artist_name, class: "review-form__text-field"
+      - else
+        = f.text_field :artist_name, class: "review-form__text-field", value: album.artist.name
+    .review-form__album
+      = f.label :album_name, "Album / Single", class: "review-form__label"
+      = render partial: 'layouts/error-message', locals: {model: review_form, column: 'album_name'}
+      - if controller.action_name == 'new'
+        = f.text_field :album_name, class: "review-form__text-field"
+      - else
+        = f.text_field :album_name, class: "review-form__text-field", value: album.title
+    .review-form__tag
+      = f.label :name, "Tags", class: "review-form__label", for: 'tag-field', name: "review_form[tags][]"
+      .review-form__tag__container
+        = f.text_field :name, class: "review-form__text-field--tag", id: 'tag-field', name: "review_form[tags][]"
+        .tags-incremental
+
+    .review-form__tag__add-button
+      = button_tag 'Add Tag', type: 'button', class: 'tag-button--add', id: 'tag-add-button'
+
+    .review-form__review
+      = f.label :review_content, "Review",class: "review-form__label"
+      = render partial: 'layouts/error-message', locals: {model: review_form, column: 'review_content'}
+      = f.text_area :review_content, class: "review-form__text-area"
+
+    = f.submit "Post", class: "review-form__submit"
