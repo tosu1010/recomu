@@ -1,7 +1,7 @@
 class AlbumsController < ApplicationController
   include SpotifyMethod
   def index
-    @albums = Album.all.order(id: 'DESC').includes(:artist)
+    @albums = Album.all.order(id: 'DESC').includes(:artist, :reviews).select { |album| album.reviews.count > 0 }
   end
 
   def show

@@ -6,13 +6,20 @@ class ReviewsController < ApplicationController
 
   def new
     @review_form = ReviewForm.new
-    redirect_to new_user_session_path unless user_signed_in? 
+    redirect_to new_user_session_path unless user_signed_in?
   end
 
   def create
     @review_form = ReviewForm.new(review_params)
+    path = Rails.application.routes.recognize_path(request.referer)
     if @review_form.save
-      redirect_to root_path
+      if path[:controller] == 'albums'
+        flash[:notice] = 'レビューを投稿しました'
+        redirect_to album_path(path[:id])
+      else
+        flash[:notice] = 'レビューを投稿しました'
+        redirect_to root_path
+      end
     else
       render :new
     end
@@ -26,8 +33,17 @@ class ReviewsController < ApplicationController
 
   def destroy
     review = Review.find(params[:id])
-    review.destroy
-    redirect_to root_path
+    if review.destroy
+      if review.album.reviews.count == 0
+        flash[:warning] = 'レビューを消去しました'
+        redirect_to root_path
+      else
+        flash[:warning] = 'レビューを消去しました'
+        redirect_back(fallback_location: root_path)
+      end
+    else
+      flash[:warning] = 'レビューが消去できませんでした'
+    end
   end
 
   private
