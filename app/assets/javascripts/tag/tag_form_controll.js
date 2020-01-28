@@ -13,7 +13,7 @@ $(function(){
     let html = 
     `
     <div class="review-form__tag__container">
-      <input class="review-form__text-field--tag" type="text" name="tags[]" id="tag-field">
+      <input class="review-form__text-field--tag" type="text" name="review_form[tags][]" id="tag-field">
       <button name="button" type="button" class="tag-button--remove" id="tag-remove-button">
         Remove
       </button>
