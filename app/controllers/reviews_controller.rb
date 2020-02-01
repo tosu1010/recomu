@@ -38,14 +38,14 @@ class ReviewsController < ApplicationController
     review = Review.find(params[:id])
     if review.destroy
       if review.album.reviews.count == 0
-        flash[:warning] = 'レビューを消去しました'
+        flash[:warning] = 'レビューを削除しました'
         redirect_to root_path
       else
-        flash[:warning] = 'レビューを消去しました'
+        flash[:warning] = 'レビューを削除しました'
         redirect_back(fallback_location: root_path)
       end
     else
-      flash[:warning] = 'レビューが消去できませんでした'
+      flash[:warning] = 'レビューを削除できませんでした'
     end
   end
 
